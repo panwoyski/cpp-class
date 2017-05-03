@@ -1,3 +1,2 @@
-cmake ..
-make #-j$(nproc)
+cmake .. && make #-j$(nproc)
 
