@@ -1,15 +1,17 @@
 # TU_ZAJRZYJ_1
 cmake_minimum_required(VERSION 2.8.11)
 # Zmienna z nazwa projektu
-set(PROJECT_NAME_STR cpp-class)
+set(PROJECT_NAME_STR zuza_vector)
 # Definicja projektu
 project(${PROJECT_NAME_STR} C CXX)
 
 # Flagi kompilacji
-add_definitions(-Wall -Wno-deprecated -pthread)
+add_definitions(-std=c++11 -Wall -Wno-deprecated -pthread)
+include_directories(${PROJECT_SOURCE_DIR}/impl)
 
-# add_executable(<nazwa_pliku_wykonywalnego> <pliki do skompilowania>)
-add_executable(cpp_class_demo main.cpp)
+#------------------
+#  Gtest
+#------------------
 
 # Download and unpack googletest at configure time
 configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
@@ -41,6 +43,25 @@ add_subdirectory(${CMAKE_BINARY_DIR}/googletest-src
 if (CMAKE_VERSION VERSION_LESS 2.8.11)
   include_directories("${gtest_SOURCE_DIR}/include")
 endif()
+
+#------------------
+# /Gtest
+#------------------
+
+# Test setup
+enable_testing()
+set(PROJECT_TEST_NAME ${PROJECT_NAME_STR}_test)
+file(GLOB TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/test/*.cpp)
+add_executable(${PROJECT_TEST_NAME} ${TEST_SRC_FILES})
+target_link_libraries(${PROJECT_TEST_NAME} gtest_main)
+add_test(vector_tests ${PROJECT_TEST_NAME})
+
+# add_subdirectory(${CMAKE_BINARY_DIR}/src)
+# add_subdirectory(${CMAKE_BINARY_DIR}/test)
+
+# file(GLOB TEST_SRC_FILES ${CMAKE_BINARY_DIR}/test/*.cpp)
+# add_executable(${PROJECT_TEST_NAME} ${TEST_SRC_FILES})
+# target_link_libraries(${PROJECT_TEST_NAME} gtest)
 
 # Now simply link against gtest or gtest_main as needed. Eg
 # add_executable(example example.cpp)
