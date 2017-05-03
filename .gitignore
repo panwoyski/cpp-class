@@ -41,3 +41,7 @@ CTestTestfile.cmake
 
 # Output executable
 cpp_class_demo
+
+# Gtest toolchain
+googletest-download/
+googletest-src/
