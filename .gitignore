@@ -40,7 +40,7 @@ compile_commands.json
 CTestTestfile.cmake
 
 # Output executable
-cpp_class_demo
+zuza_vector_test
 
 # Gtest toolchain
 googletest-download/
