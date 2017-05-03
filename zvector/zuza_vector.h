@@ -1,9 +1,12 @@
 #pragma once
 
 namespace zuza {
+
     class vector {
     public:
-        vector(const char *); 
+        vector();
+        vector(unsigned size);
+        unsigned size() const;
     };
-}
 
+}
