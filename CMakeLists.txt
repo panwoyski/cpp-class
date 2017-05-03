@@ -1,14 +1,14 @@
 # TU_ZAJRZYJ_1
 cmake_minimum_required(VERSION 2.8.11)
 # Zmienna z nazwa projektu
-set(PROJECT_NAME_STR zuza_vector)
+set(PROJECT_NAME_STR zuza_stack)
 # Definicja projektu
 project(${PROJECT_NAME_STR} C CXX)
 
 # Flagi kompilacji
 add_definitions(-std=c++11 -Wall -Wno-deprecated -pthread)
-include_directories(${PROJECT_SOURCE_DIR}/zvector)
-add_subdirectory(zvector)
+include_directories(${PROJECT_SOURCE_DIR}/zstack)
+add_subdirectory(zstack)
 
 #------------------
 #  Gtest
@@ -54,18 +54,6 @@ enable_testing()
 set(PROJECT_TEST_NAME ${PROJECT_NAME_STR}_test)
 file(GLOB TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/test/*.cpp)
 add_executable(${PROJECT_TEST_NAME} ${TEST_SRC_FILES})
-target_link_libraries(${PROJECT_TEST_NAME} gtest_main zuza_vector)
-add_test(vector_tests ${PROJECT_TEST_NAME})
-
-# add_subdirectory(${CMAKE_BINARY_DIR}/src)
-# add_subdirectory(${CMAKE_BINARY_DIR}/test)
-
-# file(GLOB TEST_SRC_FILES ${CMAKE_BINARY_DIR}/test/*.cpp)
-# add_executable(${PROJECT_TEST_NAME} ${TEST_SRC_FILES})
-# target_link_libraries(${PROJECT_TEST_NAME} gtest)
-
-# Now simply link against gtest or gtest_main as needed. Eg
-# add_executable(example example.cpp)
-# target_link_libraries(example gtest_main)
-# add_test(NAME example_test COMMAND example)
+target_link_libraries(${PROJECT_TEST_NAME} gtest_main zuza_stack)
+add_test(stack_tests ${PROJECT_TEST_NAME})
 
