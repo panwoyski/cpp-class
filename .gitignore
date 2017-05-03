@@ -45,3 +45,4 @@ zuza_vector_test
 # Gtest toolchain
 googletest-download/
 googletest-src/
+build/zuza_stack_test
