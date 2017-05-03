@@ -7,7 +7,8 @@ project(${PROJECT_NAME_STR} C CXX)
 
 # Flagi kompilacji
 add_definitions(-std=c++11 -Wall -Wno-deprecated -pthread)
-include_directories(${PROJECT_SOURCE_DIR}/impl)
+include_directories(${PROJECT_SOURCE_DIR}/zvector)
+add_subdirectory(zvector)
 
 #------------------
 #  Gtest
@@ -53,7 +54,7 @@ enable_testing()
 set(PROJECT_TEST_NAME ${PROJECT_NAME_STR}_test)
 file(GLOB TEST_SRC_FILES ${PROJECT_SOURCE_DIR}/test/*.cpp)
 add_executable(${PROJECT_TEST_NAME} ${TEST_SRC_FILES})
-target_link_libraries(${PROJECT_TEST_NAME} gtest_main)
+target_link_libraries(${PROJECT_TEST_NAME} gtest_main zuza_vector)
 add_test(vector_tests ${PROJECT_TEST_NAME})
 
 # add_subdirectory(${CMAKE_BINARY_DIR}/src)
